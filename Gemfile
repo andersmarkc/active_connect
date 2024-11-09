@@ -11,7 +11,7 @@ gem "sqlite3"
 gem "sprockets-rails"
 
 # Scrape dependencies
-#gem "httparty"
+gem "httparty"
 #gem "nokogiri"
 #gem "selenium-webdriver"
 

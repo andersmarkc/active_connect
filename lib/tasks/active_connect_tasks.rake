@@ -10,7 +10,7 @@ module ActiveConnect
   class_methods do
     def has_connect(connect_name)
       # Define scraping settings or initializations here
-      # You can store configurations in scrape.yml
+      # You can store configurations in connect.yml
     end
   end
 end
