@@ -12,9 +12,14 @@ module ActiveConnect
       # Define an association similar to ActiveStorage's `has_one_attached`
       has_one :"#{name}_data", -> { where(service: service) }, class_name: "ActiveConnect::ActiveConnectData", as: :connectable, dependent: dependent
 
-      # Optional: Define a method to easily access the connection service
+      # Define a method to access the connection service
       define_method(name) do
         public_send("#{name}_data")
+      end
+
+      # Define a `connected?` method to check if a connection exists
+      define_method("#{name}_connected?") do
+        public_send("#{name}_data").present?
       end
     end
   end
