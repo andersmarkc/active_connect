@@ -11,9 +11,9 @@ gem "sqlite3"
 gem "sprockets-rails"
 
 # Scrape dependencies
-gem "httparty"
-gem "nokogiri"
-gem "selenium-webdriver"
+#gem "httparty"
+#gem "nokogiri"
+#gem "selenium-webdriver"
 
 group :development, :test do
   gem 'byebug'

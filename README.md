@@ -6,7 +6,10 @@ How to use my plugin.
 
 
 # Guide ME
+RAILS_ENV=test rails db:create
 RAILS_ENV=test rails generate active_connect:install
+RAILS_ENV=test rails db:migrate
+RAILS_ENV=test rails test
 
 ## Installation
 Add this line to your application's Gemfile:

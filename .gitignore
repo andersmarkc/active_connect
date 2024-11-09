@@ -10,3 +10,5 @@
 /test/dummy/tmp/
 /.idea/git_toolbox_blame.xml
 /.idea/workspace.xml
+/.idea/git_toolbox_prj.xml
+/.byebug_history
