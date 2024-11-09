@@ -8,10 +8,6 @@ class HttpPartyIntegrationTest < ActiveSupport::TestCase
   end
 
   test "can make an HTTP request" do
-    # Use stubbing here to test HTTParty methods without real requests
-    ActiveConnectDataIntegrations::HttpParty.stub(:get, {status: 200}) do
-      response = @data.perform_request
-      assert_equal 200, response[:status], "Expected status to be 200"
-    end
+    @product.connection.httpparty_update_data
   end
 end

@@ -4,16 +4,17 @@
 require "httparty"
 
 module ActiveConnectDataIntegrations
-  module HttpParty
+  module Httparty
     extend ActiveSupport::Concern
 
     included do
       include HTTParty  # Include HTTParty to use its methods within the concern
     end
 
-    # Example method that makes an HTTP GET request
-    def fetch_data(endpoint, options = {})
-      self.class.get(endpoint, options)
+    def httpparty_update_data
+      byebug
+
+      puts 'dd'
     end
   end
 end
