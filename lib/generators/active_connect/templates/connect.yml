@@ -9,7 +9,7 @@ default: &default
 http_party:
   <<: *default
   engine: "httparty"
-  proxy: "http://your-proxy-server:port:username:password"
+  url_column: "not_url"
   request_headers:
     user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
   request_type: "get"

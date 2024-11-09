@@ -4,7 +4,7 @@ require "test_helper"
 class ActiveConnectDataTest < ActiveSupport::TestCase
   def setup
     # Create a product to associate with ActiveConnectData
-    @product = Product.create(name: "Test Product")
+    @product = Product.create(name: "Test Product", not_url: "http://example.com")
   end
 
   test "can create ActiveConnectData" do
@@ -35,10 +35,10 @@ class ActiveConnectDataTest < ActiveSupport::TestCase
     )
 
     # Assuming a `connected?` method is defined as `scrape_connected?` for `Product`
-    assert @product.scrape_connected?, "Expected product to have a connected scrape"
+    assert @product.connection_connected?, "Expected product to have a connected scrape"
   end
 
   test "connected? method returns false when no association exists" do
-    assert_not @product.scrape_connected?, "Expected product to have no connected scrape"
+    assert_not @product.connection_connected?, "Expected product to have no connected scrape"
   end
 end
