@@ -22,11 +22,21 @@ module ActiveConnect
       method_name = "#{config['engine']}_update_data"
 
       if respond_to?(method_name, true)
-        send(method_name, config)
+        data = send(method_name)
+        parse_data(data)
       else
         raise NoMethodError, "No method defined for engine '#{config['engine']}'"
       end
     end
+
+    def parse_data(data)
+      return unless connectable.respond_to?(:parse_data)
+
+      # Delegate parsing to the connectable model if it has `parse_data` defined
+      connectable.parse_data(data)
+    end
+
+    private
 
     # Load service-specific configuration from the YAML file
     def load_service_config

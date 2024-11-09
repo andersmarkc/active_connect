@@ -7,23 +7,20 @@ module ActiveConnectDataIntegrations
   module Httparty
     extend ActiveSupport::Concern
 
-    def httpparty_update_data
+    def httparty_update_data
       @tries = 0
       options = { headers: headers_settings, timeout: request_timeout }
       options.merge!(proxy_settings) if proxy_settings
       data = send_request(options)
-      data.code == 200 ? update_data_success : update_data_failed
+      update(data: data)
       { status: data.code, body: data.body }
     end
 
     private
 
-    def update_data_failed
-      update(status: :error, run_at: Time.current)
-    end
-
-    def update_data_success
-      update(status: :success, run_at: Time.current)
+    def save_data(data)
+      data.code == 200 ? update_data_success : update_data_failed
+      update(data: data)
     end
 
     def send_request(options)

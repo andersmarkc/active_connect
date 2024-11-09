@@ -8,7 +8,7 @@ class HttpPartyIntegrationTest < ActiveSupport::TestCase
   end
 
   test "can make an HTTP request" do
-    @product.connection.httpparty_update_data
+    @product.connection.update_data
 
     # Test if the data was successfully updated
     assert @data.reload.status, "Expected product connection status to be success"
