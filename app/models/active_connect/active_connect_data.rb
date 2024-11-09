@@ -3,8 +3,11 @@
 
 module ActiveConnect
   class ActiveConnectData < ApplicationRecord
-    belongs_to :connectable, polymorphic: true
+    # Integration with HTTParty
+    include ActiveConnectDataIntegrations::HttpParty
 
+    # Add a polymorphic association to the connectable model
+    belongs_to :connectable, polymorphic: true
     # Add a field for service to differentiate between connection types
     validates :service, presence: true
   end
