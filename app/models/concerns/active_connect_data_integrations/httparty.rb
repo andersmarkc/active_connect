@@ -12,14 +12,15 @@ module ActiveConnectDataIntegrations
       options = { headers: headers_settings, timeout: request_timeout }
       options.merge!(proxy_settings) if proxy_settings
       data = send_request(options)
-      update(data: data)
-      { status: data.code, body: data.body }
+      data = { status: data.code, body: data.body }
+      save_data(data)
+      data
     end
 
     private
 
     def save_data(data)
-      data.code == 200 ? update_data_success : update_data_failed
+      data[:status] == 200 ? update_data_success : update_data_failed
       update(data: data)
     end
 
