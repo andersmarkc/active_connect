@@ -1,0 +1,50 @@
+# lib/generators/active_connect/templates/connect.yml
+
+default: &default
+  request_timeout: 10
+  request_retries: 3
+  request_delay: 1
+
+
+http_party:
+  <<: *default
+  engine: "httparty"
+  proxy: "http://your-proxy-server:port:username:password"
+  request_headers:
+    user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
+  request_type: "get"
+
+selenium_chrome:
+  <<: *default
+  engine: "selenium_chrome"
+  proxy: "http://your-proxy-server:port"
+  request_headers:
+    user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
+
+selenium_firefox:
+  <<: *default
+  engine: "selenium_firefox"
+  proxy: "http://your-proxy-server:port"
+  request_headers:
+      user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
+
+apparition:
+  <<: *default
+  engine: "apparition"
+  proxy: "http://your-proxy-server:port"
+  request_headers:
+    user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
+
+cuprite:
+  <<: *default
+  engine: "cuprite"
+  proxy: "http://your-proxy-server:port"
+  request_headers:
+      user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
+
+mechanize:
+  <<: *default
+  engine: "mechanize"
+  proxy: "http://your-proxy-server:port:username:password"
+  request_headers:
+    user_agent: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"
