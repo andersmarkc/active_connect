@@ -18,11 +18,15 @@ module ActiveConnect
     end
 
     def copy_scrape_yml
-      template "connect.yml", "config/connect.yml"
+      template "connect.yml", Rails.root.join("config/connect.yml")
     end
 
     def copy_migrations
-      migration_template "create_active_connect_data.rb", "db/migrate/create_active_connect_data.rb"
+      migration_template "create_active_connect_active_connect_data.rb", Rails.root.join("db/migrate/create_active_connect_active_connect_data.rb")
+    end
+
+    def add_require_to_application
+      inject_into_file Rails.root.join("config/application.rb"), "\nrequire 'active_connect'", after: "Bundler.require(*Rails.groups)"
     end
   end
 end

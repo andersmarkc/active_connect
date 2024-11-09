@@ -8,8 +8,18 @@ How to use my plugin.
 # Guide ME
 RAILS_ENV=test rails db:create
 RAILS_ENV=test rails generate active_connect:install
-RAILS_ENV=test rails db:migrate
 RAILS_ENV=test rails test
+
+# Create Migration in dummy app
+cd test/dummy/
+RAILS_ENV=test rails generate migration CreateProducts name:string --app=dummy
+RAILS_ENV=test rails db:migrate
+
+# Drop
+RAILS_ENV=test rails db:drop
+
+
+# RAILS_ENV=test rails db:drop
 
 ## Installation
 Add this line to your application's Gemfile:

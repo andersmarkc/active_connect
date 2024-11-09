@@ -10,15 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_203340) do
-  create_table "active_connect_data", force: :cascade do |t|
+ActiveRecord::Schema[7.2].define(version: 2024_11_09_210429) do
+  create_table "active_connect_active_connect_data", force: :cascade do |t|
     t.string "connectable_type"
     t.integer "connectable_id"
     t.json "data"
     t.datetime "run_at"
     t.integer "status"
+    t.string "service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["connectable_type", "connectable_id"], name: "index_active_connect_data_on_connectable"
+    t.index ["connectable_type", "connectable_id"], name: "index_active_connect_active_connect_data_on_connectable"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end
