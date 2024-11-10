@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   rspec:
@@ -34,7 +34,7 @@ jobs:
 
     env:
       RAILS_ENV: test
-      RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_KEY }}
+      RAILS_MASTER_KEY: test
       TZ: "Europe/Copenhagen"
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -65,9 +65,9 @@ jobs:
 
       - name: Create database
         run: |
-          cp config/database-ci.yml config/database.yml
+          RAILS_ENV=test rails generate active_connect:install
           bin/rails db:create
           bin/rails db:schema:load
 
       - name: Run specs
-        run: bundle exec rspec --profile --format documentation --order rand
+        run: bundle exec rails test
