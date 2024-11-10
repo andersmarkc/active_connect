@@ -69,5 +69,5 @@ jobs:
           bin/rails db:create
           bin/rails db:schema:load
 
-      - name: Run specs
+      - name: Run tests
         run: bundle exec rails test
