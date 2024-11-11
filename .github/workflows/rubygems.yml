@@ -9,10 +9,12 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-       - name: Checkout
-         uses: actions/checkout@v2
 
-       - name: Build and publish to RubyGems
-         uses: actionshub/publish-gem-to-rubygems@main
-         with:
-           token: ${{ secrets.RUBYGEMS_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build and publish to RubyGems
+        uses: actionshub/publish-gem-to-rubygems@main
+        with:
+          rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
