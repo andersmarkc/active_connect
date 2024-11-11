@@ -36,6 +36,7 @@ module ActiveConnectDataIntegrations
       HTTParty.send(request_type_to_use, request_url_to_use, options)
     rescue StandardError => e
       retry if (@tries += 1) < request_retries
+      update_data_failed
       raise e
     end
 
