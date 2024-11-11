@@ -17,4 +17,4 @@ jobs:
       - name: Build and publish to RubyGems
         uses: actionshub/publish-gem-to-rubygems@main
         with:
-          rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
+          token: ${{ secrets.RUBYGEMS_API_KEY }}
