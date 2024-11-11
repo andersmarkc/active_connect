@@ -16,6 +16,12 @@ jobs:
       TZ: "Europe/Copenhagen"
 
     steps:
+      - name: Remove Microsoft Error
+        run: sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+
+      - name: Update apt-get
+        run: sudo apt-get update
+
       - name: Checkout code
         uses: actions/checkout@v3
 
